@@ -1,0 +1,34 @@
+.intro {
+  min-height: 100vh; /* Full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f4f6; /* Light gray */
+  text-align: center;
+  padding: 2rem;
+}
+
+.intro h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.intro p {
+  font-size: 1.25rem;
+  margin-top: 1rem;
+}
+
+.intro .cta {
+  font-size: 1.125rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .intro h1 {
+    font-size: 2rem;
+  }
+
+  .intro p {
+    font-size: 1rem;
+  }
+}

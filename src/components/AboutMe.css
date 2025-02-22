@@ -1,0 +1,24 @@
+#about {
+    min-height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e5e7eb; /* Slightly darker gray */
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  #about h2 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  #about p {
+    margin-top: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    #about h2 {
+      font-size: 1.5rem;
+    }
+  }

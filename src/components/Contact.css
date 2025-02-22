@@ -1,0 +1,24 @@
+#contact {
+    min-height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff; /* White */
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  #contact h2 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  #contact p {
+    margin-top: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    #contact h2 {
+      font-size: 1.5rem;
+    }
+  }

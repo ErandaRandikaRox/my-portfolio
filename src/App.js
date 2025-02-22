@@ -1,21 +1,18 @@
 import React from 'react';
 import Navbar from './components/Navbar';
-import Intro from './components/Intro';
-import Services from './components/Services';
-import Experience from './components/Experience';
-import Contact from './components/Contact';
 import AboutMe from './components/AboutMe';
-import './styles.css'; // Import the new CSS file
+import Contact from './components/Contact';
+import Experience from './components/Experience';
+import Services from './components/Services';
 
 function App() {
   return (
     <div>
       <Navbar />
-      <Intro />
-      <Services />
-      <Experience />
+      <AboutMe id="about" />
       <Contact />
-      <AboutMe />
+      <Experience />
+      <Services />
     </div>
   );
 }
