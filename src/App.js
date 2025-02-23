@@ -4,15 +4,19 @@ import AboutMe from './components/AboutMe';
 import Contact from './components/Contact';
 import Experience from './components/Experience';
 import Services from './components/Services';
+import Intro from './components/Intro';
 
 function App() {
   return (
     <div>
       <Navbar />
-      <AboutMe id="about" />
-      <Contact />
+      <Intro/>
       <Experience />
       <Services />
+      <AboutMe id="about" />
+      <Contact />
+    
+     
     </div>
   );
 }

@@ -1,34 +1,267 @@
 .intro {
-  min-height: 100vh; /* Full viewport height */
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f3f4f6; /* Light gray */
-  text-align: center;
+  background-color: #f3f4f6;
   padding: 2rem;
 }
 
-.intro h1 {
-  font-size: 2.5rem;
+.intro-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  gap: clamp(1rem, 4vw, 2rem);
+}
+
+.intro-left {
+  flex: 1;
+  text-align: left;
+}
+
+.intro-left h2 {
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
   font-weight: bold;
+  color: #555;
 }
 
-.intro p {
-  font-size: 1.25rem;
-  margin-top: 1rem;
+.intro-left h1 {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: bold;
+  margin: 0.5rem 0;
 }
 
-.intro .cta {
-  font-size: 1.125rem;
-  margin-top: 1.5rem;
+.intro-left h3 {
+  font-size: clamp(1.4rem, 4vw, 1.75rem);
+  font-weight: normal;
+  color: #808080;
+  margin-bottom: 1rem;
 }
 
+.intro-left p {
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+
+.intro-columns {
+  display: flex;
+  gap: clamp(1rem, 3vw, 1.5rem);
+}
+
+.column {
+  flex: 1;
+}
+
+.column h4 {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.button-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.75rem;
+  justify-content: flex-start;
+}
+
+.skills-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 165px;
+}
+
+.button-row {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-start;
+}
+
+.button-row.centered {
+  justify-content: center;
+}
+
+.svg-button {
+  background-color: #808080;
+  border: none;
+  padding: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.svg-button img.svg-icon {
+  width: 20px;
+  height: 20px;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}
+
+.svg-button:hover {
+  transform: scale(1.1);
+}
+
+.svg-button:hover img.svg-icon {
+  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(94%) contrast(91%);
+}
+
+.intro-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.intro-photo {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  max-height: 400px;
+}
+
+/* Tablet and below */
 @media (max-width: 768px) {
-  .intro h1 {
-    font-size: 2rem;
+  .intro {
+    padding: 1rem;
+    min-height: auto;
   }
 
-  .intro p {
-    font-size: 1rem;
+  .intro-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .intro-left {
+    text-align: center;
+    width: 100%;
+  }
+
+  .intro-columns {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .column h4 {
+    margin-bottom: 0.5rem;
+  }
+
+  .skills-grid {
+    width: 100%;
+    max-width: 180px;
+    margin: 0 auto;
+  }
+
+  .button-grid,
+  .button-row {
+    gap: 0.75rem;
+    justify-content: center;
+  }
+
+  .svg-button {
+    width: 48px;
+    height: 48px;
+  }
+
+  .svg-button img.svg-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .intro-photo {
+    max-height: 350px;
+    max-width: 85%;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .intro {
+    padding: 0.75rem;
+  }
+
+  .intro-container {
+    gap: 0.75rem;
+  }
+
+  .intro-left p {
+    margin-bottom: 0.5rem;
+  }
+
+  .intro-columns {
+    gap: 0.75rem;
+  }
+
+  .skills-grid {
+    max-width: 150px;
+  }
+
+  .button-grid,
+  .button-row {
+    gap: 0.5rem;
+  }
+
+  .svg-button {
+    width: 44px;
+    height: 44px;
+  }
+
+  .svg-button img.svg-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .intro-photo {
+    max-height: 300px;
+    max-width: 80%;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+  .intro {
+    padding: 0.5rem;
+  }
+
+  .intro-container {
+    gap: 0.5rem;
+  }
+
+  .intro-left p {
+    margin-bottom: 0.3rem;
+  }
+
+  .intro-columns {
+    gap: 0.5rem;
+  }
+
+  .skills-grid {
+    max-width: 135px;
+  }
+
+  .button-grid,
+  .button-row {
+    gap: 0.5rem;
+  }
+
+  .svg-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .svg-button img.svg-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .intro-photo {
+    max-height: 250px;
+    max-width: 75%;
   }
 }
