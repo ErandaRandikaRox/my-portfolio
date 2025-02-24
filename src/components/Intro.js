@@ -12,7 +12,7 @@ import expressIcon from '../assets/svg/express.svg';
 import mongodbIcon from '../assets/svg/mongodb.svg';
 import mysqlIcon from '../assets/svg/mysql.svg';
 
-import myPhoto from '../assets/potos/2.jpg'; 
+import myPhoto from '../assets/images/2.jpg'; 
 
 const Intro = () => {
   const jobTitles = ['App Developer', 'Web Developer', 'Python Developer'];
