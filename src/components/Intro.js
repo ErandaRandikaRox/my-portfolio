@@ -36,7 +36,7 @@ const Intro = () => {
         <div className="intro-left">
           <h2>WELCOME!</h2>
           <h1>Hi, I'm Eranda Randika</h1>
-          <h3>a {jobTitles[currentTitleIndex]}</h3>
+          <h3>{jobTitles[currentTitleIndex]}</h3>
           <p>
             I like to study new things. Being knowledgeable about PROGRAMMING or any subject is an ongoing process, and I’m always proactive about seeking new opportunities to develop and grow in my role. Those opportunities could be in the form of training, a conference, listening to a speaker, or taking on a new project, but the motivation is to increase my knowledge of the field.
           </p>
@@ -52,13 +52,13 @@ const Intro = () => {
                 </button>
                 <button
                   className="svg-button"
-                  onClick={() => openLink('https://web.facebook.com/profile.php?id=100076273405620')}
+                  onClick={() => openLink('https://web.facebook.com/?_rdc=1&_rdr')}
                 >
                   <img src={facebookIcon} alt="Facebook" className="svg-icon" />
                 </button>
                 <button
                   className="svg-button"
-                  onClick={() => openLink('https://www.linkedin.com/in/eranda-randika-93453b284/')}
+                  onClick={() => openLink('https://www.linkedin.com/feed/')}
                 >
                   <img src={linkedinIcon} alt="LinkedIn" className="svg-icon" />
                 </button>

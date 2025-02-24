@@ -1,24 +1,172 @@
-#experience {
-    min-height: 100vh; /* Full viewport height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #e5e7eb; /* Slightly darker gray */
+.experience {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f4f7fa; /* Softer light gray */
+  padding: 4rem 2rem 2rem; /* Increased top padding to account for navbar */
+  margin-top: 60px; /* Offset for fixed navbar height */
+}
+
+.experience-container {
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  gap: 2rem;
+}
+
+.experience-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.experience-left h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: bold;
+  color: #1a73e8; /* Vibrant blue */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.experience-right {
+  flex: 2;
+}
+
+.experience-cards {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); /* Subtle gradient */
+  border-radius: 12px;
+  padding: 1.5rem;
+  flex: 1;
+  min-width: 250px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  opacity: 0; /* Start hidden for animation */
+  transform: translateY(20px); /* Start below */
+  transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
+  position: relative; /* Ensure stacking context */
+  z-index: 1; /* Below navbar */
+}
+
+.card.animate {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card:hover {
+  transform: scale(1.15) translateY(-10px); /* Adjusted lift to avoid navbar overlap */
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+}
+
+.card h4 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+  color: #1a73e8; /* Blue by default */
+  text-align: left;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover h4 {
+  color: #808080; /* Gray on hover */
+  transform: translateY(-5px); /* Slip upward */
+}
+
+.card p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #4a4a4a; /* Darker gray */
+  text-align: left;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .experience {
+    padding: 3rem 1rem 1rem; /* Adjusted top padding */
+    margin-top: 60px; /* Consistent offset */
+  }
+
+  .experience-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .experience-left {
     text-align: center;
-    padding: 2rem;
   }
-  
-  #experience h2 {
+
+  .experience-right {
+    width: 100%;
+  }
+
+  .experience-cards {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .card {
+    min-width: unset;
+    width: 100%;
+  }
+
+  .card:hover {
+    transform: scale(1.05) translateY(-5px); /* Reduced effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .card:hover h4 {
+    transform: translateY(-3px); /* Reduced slip */
+  }
+}
+
+@media (max-width: 480px) {
+  .experience {
+    padding: 2.5rem 0.75rem 0.75rem;
+  }
+
+  .experience-container {
+    gap: 0.75rem;
+  }
+
+  .card {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .experience {
+    padding: 2rem 0.5rem 0.5rem;
+  }
+
+  .experience-container {
+    gap: 0.5rem;
+  }
+
+  .experience-left h2 {
     font-size: 2rem;
-    font-weight: bold;
   }
-  
-  #experience p {
-    margin-top: 1rem;
+
+  .card h4 {
+    font-size: 1.1rem;
   }
-  
-  @media (max-width: 768px) {
-    #experience h2 {
-      font-size: 1.5rem;
-    }
+
+  .card p {
+    font-size: 0.9rem;
   }
+}
