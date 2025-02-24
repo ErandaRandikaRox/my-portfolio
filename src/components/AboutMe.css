@@ -1,24 +1,159 @@
-#about {
-    min-height: 100vh; /* Full viewport height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #e5e7eb; /* Slightly darker gray */
-    text-align: center;
-    padding: 2rem;
+.certification {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f4f7fa; /* Light gray background, matching your portfolio */
+  padding: 4rem 2rem 2rem; /* Top padding for navbar */
+  margin-top: 60px; /* Offset for fixed navbar */
+}
+
+.certification-container {
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+}
+
+.certification-card {
+  background-color: #1a1a1a; /* Dark background */
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  opacity: 0; /* Start hidden for animation */
+  transform: translateY(20px); /* Start below */
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  position: relative;
+  max-width: 600px; /* Card width */
+  margin: 0 auto; /* Center the card */
+}
+
+.certification-card.animate {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  #about h2 {
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.certification-card::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 2px dashed #4a4a4a; /* Dashed border */
+  border-radius: 12px;
+  pointer-events: none; /* Avoid interfering with interactions */
+}
+
+.certification-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background-color: #4a4a4a; /* Dot color */
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.certification-card h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: bold;
+  color: #a0a0a0; /* Light gray for title */
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: #7a7a7a; /* Medium gray for subtitle */
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.description {
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  color: #b0b0b0; /* Slightly lighter gray for description */
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .certification {
+    padding: 3rem 1rem 1rem;
+    margin-top: 60px;
+  }
+
+  .certification-card {
+    padding: 1.5rem;
+    max-width: 90%; /* Wider on mobile */
+  }
+
+  .certification-card h2 {
     font-size: 2rem;
-    font-weight: bold;
   }
-  
-  #about p {
-    margin-top: 1rem;
+
+  .subtitle {
+    font-size: 1rem;
   }
-  
-  @media (max-width: 768px) {
-    #about h2 {
-      font-size: 1.5rem;
-    }
+
+  .description {
+    font-size: 0.9rem;
   }
+}
+
+@media (max-width: 480px) {
+  .certification {
+    padding: 2.5rem 0.75rem 0.75rem;
+  }
+
+  .certification-card {
+    padding: 1rem;
+  }
+
+  .certification-card h2 {
+    font-size: 1.75rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .description {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .certification {
+    padding: 2rem 0.5rem 0.5rem;
+  }
+
+  .certification-card {
+    padding: 0.8rem;
+  }
+
+  .certification-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+  }
+
+  .description {
+    font-size: 0.8rem;
+  }
+}
