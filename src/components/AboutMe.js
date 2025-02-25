@@ -1,41 +1,82 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './AboutMe.css';
+import Education from './Education';
+import Skills from './Skills';
+import ExperienceContent from './ExperienceContent'; // Renamed for clarity
 
-const Certification = () => {
-  const cardRef = useRef(null);
+const AboutMe = () => {
+  const [activeSection, setActiveSection] = useState(null);
+  const titleRef = useRef(null);
+  const buttonsRef = useRef([]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
+        entries.forEach((entry, index) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('animate');
+            if (entry.target === titleRef.current) {
+              entry.target.style.animationDelay = '0s'; // Title first
+            } else {
+              entry.target.style.animationDelay = `${index * 0.2}s`; // Buttons staggered
+            }
           }
         });
       },
       { threshold: 0.1 } // Trigger when 10% visible
     );
 
-    if (cardRef.current) observer.observe(cardRef.current);
+    if (titleRef.current) observer.observe(titleRef.current);
+    buttonsRef.current.forEach(button => {
+      if (button) observer.observe(button);
+    });
 
     return () => {
-      if (cardRef.current) observer.unobserve(cardRef.current);
+      if (titleRef.current) observer.unobserve(titleRef.current);
+      buttonsRef.current.forEach(button => {
+        if (button) observer.unobserve(button);
+      });
     };
   }, []);
 
+  const handleButtonClick = (section) => {
+    setActiveSection(section === activeSection ? null : section);
+  };
+
   return (
-    <section id="certification" className="certification">
-      <div className="certification-container">
-        <div className="certification-card" ref={cardRef}>
-          <h2>ICD - ICET Certified Developer</h2>
-          <p className="subtitle">Institute of Computer Engineering Technology</p>
-          <p className="description">
-            The training provided by the institute offers the knowledge required to become skilled in computer engineering and technology, enhancing expertise in software development and system design.
-          </p>
+    <section id="about-me" className="about-me">
+      <div className="about-me-container">
+        <h2 ref={titleRef}>3+ Years of Experience</h2>
+        <p className="resume">My Resume</p>
+        <div className="button-group">
+          <button
+            ref={el => (buttonsRef.current[0] = el)}
+            className={`about-button ${activeSection === 'education' ? 'active' : ''}`}
+            onClick={() => handleButtonClick('education')}
+          >
+            Education
+          </button>
+          <button
+            ref={el => (buttonsRef.current[1] = el)}
+            className={`about-button ${activeSection === 'skills' ? 'active' : ''}`}
+            onClick={() => handleButtonClick('skills')}
+          >
+            Professional Skills
+          </button>
+          <button
+            ref={el => (buttonsRef.current[2] = el)}
+            className={`about-button ${activeSection === 'experience' ? 'active' : ''}`}
+            onClick={() => handleButtonClick('experience')}
+          >
+            Experience
+          </button>
         </div>
+        {activeSection === 'education' && <Education />}
+        {activeSection === 'skills' && <Skills />}
+        {activeSection === 'experience' && <ExperienceContent />}
       </div>
     </section>
   );
 };
 
-export default Certification;
+export default AboutMe;

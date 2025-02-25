@@ -1,33 +1,75 @@
-.certification {
+.about-me {
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  background-color: #f4f7fa; /* Light gray background, matching your portfolio */
+  background-color: #f4f7fa; /* Softer light gray */
   padding: 4rem 2rem 2rem; /* Top padding for navbar */
   margin-top: 60px; /* Offset for fixed navbar */
 }
 
-.certification-container {
+.about-me-container {
   max-width: 1200px;
   width: 100%;
-  position: relative;
+  text-align: center; /* Center all content */
+  padding-top: 2rem; /* Space from top */
 }
 
-.certification-card {
-  background-color: #1a1a1a; /* Dark background */
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+.about-me-container h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem); /* Reduced */
+  font-weight: bold;
+  color: #333; /* Dark gray */
+  margin-bottom: 0.5rem;
+  opacity: 0; /* Start hidden for animation */
+  transform: translateY(-20px); /* Start above */
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.about-me-container h2.animate {
+  animation: slideInDown 0.6s ease-out forwards;
+}
+
+@keyframes slideInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.resume {
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem); /* Reduced */
+  font-weight: bold;
+  color: #555; /* Medium gray */
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap; /* Allow wrapping on mobile */
+}
+
+.about-button {
+  background-color: #f0f4f8; /* Light blue-gray */
+  border: 1px solid #1a73e8; /* Thin blue border */
+  color: #000000; /* Black text */
+  font-size: clamp(1rem, 2.5vw, 1.2rem); /* Consistent size */
+  padding: 0.75rem 2.5rem; /* Wider and taller */
+  border-radius: 10px; /* Slightly rounder corners */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
   opacity: 0; /* Start hidden for animation */
   transform: translateY(20px); /* Start below */
   transition: transform 0.6s ease, opacity 0.6s ease;
-  position: relative;
-  max-width: 600px; /* Card width */
-  margin: 0 auto; /* Center the card */
 }
 
-.certification-card.animate {
+.about-button.animate {
   animation: fadeInUp 0.6s ease-out forwards;
 }
 
@@ -42,118 +84,90 @@
   }
 }
 
-.certification-card::before {
-  content: '';
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  right: 10px;
-  bottom: 10px;
-  border: 2px dashed #4a4a4a; /* Dashed border */
-  border-radius: 12px;
-  pointer-events: none; /* Avoid interfering with interactions */
+.about-button:hover {
+  background-color: #1a73e8; /* Blue on hover */
+  color: #ffffff; /* White text on hover */
+  border-color: #1557b0; /* Darker blue border on hover */
+  transform: scale(1.05); /* Slight pop-up */
 }
 
-.certification-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 12px;
-  height: 12px;
-  background-color: #4a4a4a; /* Dot color */
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
+.about-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3); /* Black focus ring */
 }
 
-.certification-card h2 {
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  font-weight: bold;
-  color: #a0a0a0; /* Light gray for title */
-  margin-bottom: 0.5rem;
-  text-align: left;
-}
-
-.subtitle {
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
-  color: #7a7a7a; /* Medium gray for subtitle */
-  margin-bottom: 1rem;
-  text-align: left;
-}
-
-.description {
-  font-size: clamp(0.9rem, 2vw, 1rem);
-  color: #b0b0b0; /* Slightly lighter gray for description */
-  line-height: 1.6;
-  text-align: left;
+.about-button.active {
+  background-color: #1557b0; /* Darker blue for active state */
+  border-color: #1557b0;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .certification {
+  .about-me {
     padding: 3rem 1rem 1rem;
     margin-top: 60px;
   }
 
-  .certification-card {
-    padding: 1.5rem;
-    max-width: 90%; /* Wider on mobile */
+  .about-me-container {
+    padding-top: 1.5rem;
   }
 
-  .certification-card h2 {
-    font-size: 2rem;
+  .about-me-container h2 {
+    font-size: 1.5rem;
   }
 
-  .subtitle {
-    font-size: 1rem;
+  .resume {
+    font-size: 1.2rem;
   }
 
-  .description {
+  .button-group {
+    gap: 0.75rem;
+  }
+
+  .about-button {
+    padding: 0.6rem 2rem; /* Slightly reduced */
     font-size: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
-  .certification {
+  .about-me {
     padding: 2.5rem 0.75rem 0.75rem;
   }
 
-  .certification-card {
-    padding: 1rem;
+  .about-me-container h2 {
+    font-size: 1.3rem;
   }
 
-  .certification-card h2 {
-    font-size: 1.75rem;
+  .resume {
+    font-size: 1rem;
   }
 
-  .subtitle {
+  .button-group {
+    gap: 0.5rem;
+  }
+
+  .about-button {
     font-size: 0.9rem;
-  }
-
-  .description {
-    font-size: 0.85rem;
+    padding: 0.5rem 1.8rem; /* Further reduced */
   }
 }
 
 @media (max-width: 360px) {
-  .certification {
+  .about-me {
     padding: 2rem 0.5rem 0.5rem;
   }
 
-  .certification-card {
-    padding: 0.8rem;
+  .about-me-container h2 {
+    font-size: 1.2rem;
   }
 
-  .certification-card h2 {
-    font-size: 1.5rem;
+  .resume {
+    font-size: 0.9rem;
   }
 
-  .subtitle {
+  .about-button {
     font-size: 0.8rem;
-  }
-
-  .description {
-    font-size: 0.8rem;
+    padding: 0.4rem 1.5rem; /* Reduced further */
   }
 }
