@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './AboutMe.css';
 import Education from './Education';
 import Skills from './Skills';
-import ExperienceContent from './ExperienceContent'; // Renamed for clarity
+import ExperienceContent from './ExperienceContent'; // Ensure correct import
 
 const AboutMe = () => {
   const [activeSection, setActiveSection] = useState(null);
@@ -40,7 +40,7 @@ const AboutMe = () => {
   }, []);
 
   const handleButtonClick = (section) => {
-    setActiveSection(section === activeSection ? null : section);
+    setActiveSection(section === activeSection ? null : section); // Toggle or clear active section
   };
 
   return (
@@ -71,9 +71,11 @@ const AboutMe = () => {
             Experience
           </button>
         </div>
-        {activeSection === 'education' && <Education />}
-        {activeSection === 'skills' && <Skills />}
-        {activeSection === 'experience' && <ExperienceContent />}
+        <div className="content-wrapper">
+          {activeSection === 'education' && <Education />}
+          {activeSection === 'skills' && <Skills />}
+          {activeSection === 'experience' && <ExperienceContent />}
+        </div>
       </div>
     </section>
   );
