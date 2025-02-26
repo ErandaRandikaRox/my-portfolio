@@ -5,7 +5,7 @@ import Skills from './Skills';
 import ExperienceContent from './ExperienceContent'; // Ensure correct import
 
 const AboutMe = () => {
-  const [activeSection, setActiveSection] = useState(null);
+  const [activeSection, setActiveSection] = useState(null); // Start with null (no content initially)
   const titleRef = useRef(null);
   const buttonsRef = useRef([]);
 
@@ -40,7 +40,7 @@ const AboutMe = () => {
   }, []);
 
   const handleButtonClick = (section) => {
-    setActiveSection(section === activeSection ? null : section); // Toggle or clear active section
+    setActiveSection(prev => (prev === section ? null : section)); // Toggle or clear active section
   };
 
   return (
@@ -72,9 +72,13 @@ const AboutMe = () => {
           </button>
         </div>
         <div className="content-wrapper">
-          {activeSection === 'education' && <Education />}
-          {activeSection === 'skills' && <Skills />}
-          {activeSection === 'experience' && <ExperienceContent />}
+          {activeSection && (
+            <>
+              {activeSection === 'education' && <Education />}
+              {activeSection === 'skills' && <Skills />}
+              {activeSection === 'experience' && <ExperienceContent />}
+            </>
+          )}
         </div>
       </div>
     </section>
