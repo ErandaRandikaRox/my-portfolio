@@ -1,24 +1,105 @@
 #contact {
-    min-height: 100vh; /* Full viewport height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffffff; /* White */
-    text-align: center;
-    padding: 2rem;
+  min-height: 100vh; /* Full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff; /* White */
+  text-align: center;
+  padding: 2rem;
+}
+
+#contact h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+#contact p {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+
+.form-group {
+  margin: 1rem 0;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  max-width: 400px; /* Limit width for larger screens */
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #1a73e8; /* Blue border */
+  border-radius: 8px;
+  background-color: #f0f4f8; /* Light blue-gray */
+  color: #333;
+}
+
+.form-group textarea {
+  resize: vertical; /* Allow vertical resizing only */
+}
+
+#contact button {
+  background-color: #1a73e8; /* Blue background */
+  color: #ffffff; /* White text */
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#contact button:hover {
+  background-color: #1557b0; /* Darker blue on hover */
+}
+
+.status-message {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #1a73e8; /* Blue for success/error */
+}
+
+.email-fallback a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+.email-fallback a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #contact {
+    padding: 1.5rem;
   }
-  
+
   #contact h2 {
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: 1.5rem;
   }
-  
+
+  .form-group input,
+  .form-group textarea {
+    max-width: 100%; /* Full width on smaller screens */
+  }
+
   #contact p {
-    margin-top: 1rem;
+    font-size: 1rem;
   }
-  
-  @media (max-width: 768px) {
-    #contact h2 {
-      font-size: 1.5rem;
-    }
+}
+
+@media (max-width: 480px) {
+  #contact {
+    padding: 1rem;
   }
+
+  #contact h2 {
+    font-size: 1.25rem;
+  }
+
+  #contact button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
