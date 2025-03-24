@@ -22,15 +22,20 @@ const Navbar = () => {
         <div className="nav-left">
           <span>Eranda Randika</span>
         </div>
-        <button className="nav-toggle" onClick={toggleMenu}>
+        <button
+          className="nav-toggle"
+          onClick={toggleMenu}
+          aria-label={isOpen ? 'Close menu' : 'Open menu'} // Accessibility improvement
+          aria-expanded={isOpen} // Accessibility improvement
+        >
           {isOpen ? '✖' : '☰'} {/* Hamburger or close icon */}
         </button>
         <div className={`nav-center ${isOpen ? 'open' : ''}`}>
           <button onClick={() => scrollToSection('intro')}>Intro</button>
-          <button onClick={() => scrollToSection('about')}>About Me</button>
-          <button onClick={() => scrollToSection('contact')}>Contact</button>
+          <button onClick={() => scrollToSection('AboutMe')}>About Me</button>
           <button onClick={() => scrollToSection('experience')}>Experience</button>
           <button onClick={() => scrollToSection('services')}>Services</button>
+          <button onClick={() => scrollToSection('contact')}>Contact</button>
         </div>
       </div>
     </nav>

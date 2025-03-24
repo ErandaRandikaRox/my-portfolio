@@ -75,11 +75,11 @@ nav {
   }
 
   .nav-center {
-    display: none; /* Hidden by default */
+    display: none; /* Hidden by default on mobile */
     flex-direction: column;
     width: 100%;
     position: absolute;
-    top: calc(100% + 0.5rem); /* Below navbar with slight gap */
+    top: 100%; /* Directly below navbar */
     left: 0;
     background-color: #ffffff;
     padding: 1rem 0;
@@ -92,12 +92,11 @@ nav {
   }
 
   .nav-center button {
-    width: 100%;
-    text-align: center;
+    width: 90%; /* Slightly less than full width for padding */
+    margin: 0.25rem auto; /* Center buttons */
     padding: 0.75rem;
-    margin: 0.25rem 0;
     font-size: 0.9rem;
-    border: none; /* Remove border for cleaner look */
+    border: none; /* Cleaner look on mobile */
     background-color: #f0f4f8; /* Light blue-gray background */
   }
 
