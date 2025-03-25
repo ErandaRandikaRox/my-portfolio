@@ -1,79 +1,109 @@
-.about-me {
-  min-height: 100vh;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  background-color: #f4f7fa; /* Softer light gray */
-  padding: 4rem 2rem 2rem; /* Top padding for navbar */
-  margin-top: 60px; /* Offset for fixed navbar */
+/* AboutMe.css */
+.about-me-section {
+  padding: 6rem 1rem;
+  background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+  position: relative;
+  overflow: hidden;
 }
 
 .about-me-container {
   max-width: 1200px;
-  width: 100%;
-  text-align: center; /* Center all content */
-  padding-top: 2rem; /* Space from top */
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
-.about-me-container h2 {
-  font-size: clamp(1.5rem, 3vw, 2rem); /* Reduced */
-  font-weight: bold;
-  color: #333; /* Dark gray */
-  margin-bottom: 0.5rem;
-  opacity: 0; /* Start hidden for animation */
-  transform: translateY(-20px); /* Start above */
-  transition: transform 0.6s ease, opacity 0.6s ease;
-}
-
-.about-me-container h2.animate {
-  animation: slideInDown 0.6s ease-out forwards;
-}
-
-@keyframes slideInDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.resume {
-  font-size: clamp(1.2rem, 2.5vw, 1.5rem); /* Reduced */
-  font-weight: bold;
-  color: #555; /* Medium gray */
-  margin-bottom: 1.5rem;
+.section-header {
   text-align: center;
+  margin-bottom: 3rem;
 }
 
-.button-group {
+.section-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
   display: flex;
-  gap: 1rem;
+  align-items: center;
   justify-content: center;
-  flex-wrap: wrap; /* Allow wrapping on mobile */
-  margin-bottom: 2rem; /* Space before content */
+  gap: 0.8rem;
+  opacity: 0;
+  transform: translateY(20px);
 }
 
-.about-button {
-  background-color: #f0f4f8; /* Light blue-gray */
-  border: 1px solid #1a73e8; /* Thin blue border */
-  color: #000000; /* Black text */
-  font-size: clamp(1rem, 2.5vw, 1.2rem); /* Consistent size */
-  padding: 0.75rem 2.5rem; /* Wider and taller */
-  border-radius: 10px; /* Slightly rounder corners */
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-  opacity: 0; /* Start hidden for animation */
-  transform: translateY(20px); /* Start below */
-  transition: transform 0.6s ease, opacity 0.6s ease;
-}
-
-.about-button.animate {
+.section-title.animate {
   animation: fadeInUp 0.6s ease-out forwards;
 }
 
+.title-icon {
+  color: #1a73e8;
+  font-size: 1.2em;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: #4a5568;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.tab-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.tab-button {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: transparent;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4a5568;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.tab-button.animate {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.tab-button:nth-child(1) { animation-delay: 0.2s; }
+.tab-button:nth-child(2) { animation-delay: 0.4s; }
+.tab-button:nth-child(3) { animation-delay: 0.6s; }
+
+.tab-button:hover {
+  background: rgba(26, 115, 232, 0.1);
+  color: #1a73e8;
+}
+
+.tab-button.active {
+  background: #1a73e8;
+  color: white;
+  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
+}
+
+.tab-button svg {
+  font-size: 1.1rem;
+}
+
+.content-container {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  min-height: 400px;
+}
+
+/* Animations */
 @keyframes fadeInUp {
   0% {
     opacity: 0;
@@ -85,109 +115,68 @@
   }
 }
 
-.about-button:hover {
-  background-color: #1a73e8; /* Blue on hover */
-  color: #ffffff; /* White text on hover */
-  border-color: #1557b0; /* Darker blue border on hover */
-  transform: scale(1.05); /* Slight pop-up */
+/* Responsive Design */
+@media (max-width: 992px) {
+  .about-me-section {
+    padding: 5rem 1rem;
+  }
+  
+  .tab-container {
+    gap: 0.8rem;
+  }
+  
+  .tab-button {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.95rem;
+  }
+  
+  .content-container {
+    padding: 1.5rem;
+  }
 }
 
-.about-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3); /* Black focus ring */
-}
-
-.about-button.active {
-  background-color: #1557b0; /* Darker blue for active state */
-  border-color: #1557b0;
-  color: #ffffff; /* White text for active state */
-}
-
-.content-wrapper {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 2rem 0;
-  text-align: center;
-}
-
-/* Responsive adjustments */
 @media (max-width: 768px) {
-  .about-me {
-    padding: 3rem 1rem 1rem;
-    margin-top: 60px;
+  .about-me-section {
+    padding: 4rem 1rem;
   }
-
-  .about-me-container {
-    padding-top: 1.5rem;
+  
+  .section-header {
+    margin-bottom: 2rem;
   }
-
-  .about-me-container h2 {
-    font-size: 1.5rem;
+  
+  .tab-container {
+    margin-bottom: 2rem;
   }
-
-  .resume {
-    font-size: 1.2rem;
-  }
-
-  .button-group {
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .about-button {
-    padding: 0.6rem 2rem; /* Slightly reduced */
+  
+  .tab-button {
+    padding: 0.6rem 1rem;
     font-size: 0.9rem;
   }
-
-  .content-wrapper {
-    padding: 1.5rem 0;
+  
+  .content-container {
+    min-height: 300px;
   }
 }
 
 @media (max-width: 480px) {
-  .about-me {
-    padding: 2.5rem 0.75rem 0.75rem;
+  .about-me-section {
+    padding: 3rem 1rem;
   }
-
-  .about-me-container h2 {
-    font-size: 1.3rem;
+  
+  .section-title {
+    font-size: 1.5rem;
   }
-
-  .resume {
-    font-size: 1rem;
+  
+  .section-subtitle {
+    font-size: 0.95rem;
   }
-
-  .button-group {
-    gap: 0.5rem;
-    margin-bottom: 1rem;
+  
+  .tab-button {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
   }
-
-  .about-button {
-    font-size: 0.9rem;
-    padding: 0.5rem 1.8rem; /* Further reduced */
-  }
-
-  .content-wrapper {
-    padding: 1rem 0;
-  }
-}
-
-@media (max-width: 360px) {
-  .about-me {
-    padding: 2rem 0.5rem 0.5rem;
-  }
-
-  .about-me-container h2 {
-    font-size: 1.2rem;
-  }
-
-  .resume {
-    font-size: 0.9rem;
-  }
-
-  .about-button {
-    font-size: 0.8rem;
-    padding: 0.4rem 1.5rem; /* Reduced further */
+  
+  .content-container {
+    padding: 1rem;
   }
 }

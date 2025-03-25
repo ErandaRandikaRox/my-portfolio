@@ -1,37 +1,60 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Skills.css';
 
 const Skills = () => {
   const skills = [
-    { name: 'Flutter', percentage: 100 },
-    { name: 'React', percentage: 90 },
-    { name: 'MySQL', percentage: 85 },
-    { name: 'Express', percentage: 72 },
-    { name: 'HTML', percentage: 60 },
-    { name: 'CSS', percentage: 60 },
-    { name: 'JavaScript', percentage: 50 }, // Replaced duplicate "Express" with JavaScript
-    { name: 'Python', percentage: 50 },
+    { name: 'Flutter', percentage: 100, color: '#02569B' },
+    { name: 'React', percentage: 90, color: '#61DAFB' },
+    { name: 'MySQL', percentage: 85, color: '#4479A1' },
+    { name: 'Express', percentage: 72, color: '#000000' },
+    { name: 'HTML', percentage: 60, color: '#E34F26' },
+    { name: 'CSS', percentage: 60, color: '#1572B6' },
+    { name: 'JavaScript', percentage: 50, color: '#F7DF1E' },
+    { name: 'Python', percentage: 50, color: '#3776AB' },
   ];
 
+  useEffect(() => {
+    // Animation trigger for skill bars
+    const skillBars = document.querySelectorAll('.skill-level');
+    skillBars.forEach(bar => {
+      const width = bar.getAttribute('data-percent');
+      bar.style.width = '0';
+      setTimeout(() => {
+        bar.style.width = `${width}%`;
+      }, 100);
+    });
+  }, []);
+
   return (
-    <div className="skills-container">
-      <h3 className="skills-title">Professional Skills</h3>
-      <div className="skills-graph">
-        {skills.map((skill, index) => (
-          <div key={index} className="skill-bar">
-            <span className="skill-name">{skill.name}</span>
-            <div className="skill-progress">
-              <div
-                className="skill-level"
-                style={{ height: `${skill.percentage}%` }}
-              >
-                {skill.percentage}%
+    <section id="skills" className="skills-section">
+      <div className="skills-container">
+        <div className="section-header">
+          <h2 className="section-title">Technical Skills</h2>
+          <p className="section-subtitle">My proficiency in various technologies</p>
+        </div>
+        
+        <div className="skills-grid">
+          {skills.map((skill, index) => (
+            <div key={index} className="skill-card">
+              <div className="skill-info">
+                <span className="skill-name">{skill.name}</span>
+                <span className="skill-percentage">{skill.percentage}%</span>
+              </div>
+              <div className="skill-progress-container">
+                <div 
+                  className="skill-level" 
+                  style={{ 
+                    width: `${skill.percentage}%`,
+                    backgroundColor: skill.color,
+                  }}
+                  data-percent={skill.percentage}
+                ></div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

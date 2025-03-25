@@ -12,94 +12,131 @@ import expressIcon from '../assets/svg/express.svg';
 import mongodbIcon from '../assets/svg/mongodb.svg';
 import mysqlIcon from '../assets/svg/mysql.svg';
 
-import myPhoto from '../assets/images/2.jpg'; 
+import myPhoto from '../assets/images/2.jpg';
 
 const Intro = () => {
   const jobTitles = ['App Developer', 'Web Developer', 'Python Developer'];
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+  const [isTyping, setIsTyping] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentTitleIndex((prevIndex) => (prevIndex + 1) % jobTitles.length);
-    }, 1000);
+      setIsTyping(false);
+      setTimeout(() => {
+        setCurrentTitleIndex((prevIndex) => (prevIndex + 1) % jobTitles.length);
+        setIsTyping(true);
+      }, 300);
+    }, 2000);
     return () => clearInterval(interval);
   }, [jobTitles.length]);
 
-  // Handlers for social media links
   const openLink = (url) => {
-    window.open(url, '_blank'); // Opens URL in a new tab
+    window.open(url, '_blank');
   };
 
   return (
     <section id="intro" className="intro">
       <div className="intro-container">
         <div className="intro-left">
-          <h2>WELCOME!</h2>
-          <h1>Hi, I'm Eranda Randika</h1>
-          <h3>{jobTitles[currentTitleIndex]}</h3>
-          <p>
-            I like to study new things. Being knowledgeable about PROGRAMMING or any subject is an ongoing process, and I’m always proactive about seeking new opportunities to develop and grow in my role. Those opportunities could be in the form of training, a conference, listening to a speaker, or taking on a new project, but the motivation is to increase my knowledge of the field.
+          <div className="welcome-badge">WELCOME!</div>
+          <h1>
+            Hi, I'm <span className="highlight-name">Eranda Randika</span>
+          </h1>
+          <div className="job-title-container">
+            <h3 className={`job-title ${isTyping ? 'typing' : ''}`}>
+              {jobTitles[currentTitleIndex]}
+            </h3>
+            <span className="cursor">|</span>
+          </div>
+          <p className="intro-description">
+            I'm passionate about creating innovative digital solutions. With expertise in multiple programming languages and frameworks, I transform ideas into functional, beautiful applications. Continuous learning and staying updated with the latest technologies drive my work.
           </p>
+          
           <div className="intro-columns">
             <div className="column find-me">
-              <h4>FIND ME IN</h4>
-              <div className="button-grid find-me-row">
+              <h4 className="section-subtitle">FIND ME ON</h4>
+              <div className="social-links">
                 <button
-                  className="svg-button"
+                  className="social-button github"
                   onClick={() => openLink('https://github.com/ErandaRandikaRox')}
+                  aria-label="GitHub"
                 >
-                  <img src={githubIcon} alt="GitHub" className="svg-icon" />
+                  <img src={githubIcon} alt="GitHub" className="social-icon" />
+                  <span>GitHub</span>
                 </button>
                 <button
-                  className="svg-button"
+                  className="social-button facebook"
                   onClick={() => openLink('https://web.facebook.com/?_rdc=1&_rdr')}
+                  aria-label="Facebook"
                 >
-                  <img src={facebookIcon} alt="Facebook" className="svg-icon" />
+                  <img src={facebookIcon} alt="Facebook" className="social-icon" />
+                  <span>Facebook</span>
                 </button>
                 <button
-                  className="svg-button"
+                  className="social-button linkedin"
                   onClick={() => openLink('https://www.linkedin.com/feed/')}
+                  aria-label="LinkedIn"
                 >
-                  <img src={linkedinIcon} alt="LinkedIn" className="svg-icon" />
+                  <img src={linkedinIcon} alt="LinkedIn" className="social-icon" />
+                  <span>LinkedIn</span>
                 </button>
               </div>
             </div>
+            
             <div className="column skills">
-              <h4>Best Skill On</h4>
+              <h4 className="section-subtitle">TECH STACK</h4>
               <div className="skills-grid">
-                <div className="button-row">
-                  <button className="svg-button">
-                    <img src={flutterIcon} alt="Flutter" className="svg-icon" />
-                  </button>
-                  <button className="svg-button">
-                    <img src={reactIcon} alt="React" className="svg-icon" />
-                  </button>
-                  <button className="svg-button">
-                    <img src={pythonIcon} alt="Python" className="svg-icon" />
-                  </button>
+                <div className="skill-category">
+                  <h5 className="skill-category-title">Frontend</h5>
+                  <div className="skill-items">
+                    <div className="skill-item">
+                      <img src={flutterIcon} alt="Flutter" className="skill-icon" />
+                      <span>Flutter</span>
+                    </div>
+                    <div className="skill-item">
+                      <img src={reactIcon} alt="React" className="skill-icon" />
+                      <span>React</span>
+                    </div>
+                  </div>
                 </div>
-                <div className="button-row">
-                  <button className="svg-button">
-                    <img src={javascriptIcon} alt="JavaScript" className="svg-icon" />
-                  </button>
-                  <button className="svg-button">
-                    <img src={expressIcon} alt="Express" className="svg-icon" />
-                  </button>
-                  <button className="svg-button">
-                    <img src={mongodbIcon} alt="MongoDB" className="svg-icon" />
-                  </button>
+                
+                <div className="skill-category">
+                  <h5 className="skill-category-title">Backend</h5>
+                  <div className="skill-items">
+                    <div className="skill-item">
+                      <img src={pythonIcon} alt="Python" className="skill-icon" />
+                      <span>Python</span>
+                    </div>
+                    <div className="skill-item">
+                      <img src={expressIcon} alt="Express" className="skill-icon" />
+                      <span>Express</span>
+                    </div>
+                  </div>
                 </div>
-                <div className="button-row centered">
-                  <button className="svg-button">
-                    <img src={mysqlIcon} alt="MySQL" className="svg-icon" />
-                  </button>
+                
+                <div className="skill-category">
+                  <h5 className="skill-category-title">Databases</h5>
+                  <div className="skill-items">
+                    <div className="skill-item">
+                      <img src={mongodbIcon} alt="MongoDB" className="skill-icon" />
+                      <span>MongoDB</span>
+                    </div>
+                    <div className="skill-item">
+                      <img src={mysqlIcon} alt="MySQL" className="skill-icon" />
+                      <span>MySQL</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        
         <div className="intro-right">
-          <img src={myPhoto} alt="Eranda Randika" className="intro-photo" />
+          <div className="photo-container">
+            <img src={myPhoto} alt="Eranda Randika" className="intro-photo" />
+            <div className="photo-decoration"></div>
+          </div>
         </div>
       </div>
     </section>
