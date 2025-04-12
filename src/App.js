@@ -16,18 +16,25 @@ function App() {
         <section id="intro" className="section">
           <Intro />
         </section>
-        
+
+        <section id="AboutMe" className="section">
+          <AboutMe />
+        </section>
+
+        <section id="services" className="section">
+          <Experience />
+        </section>
+
+        <section id="services" className="section">
+          <Services />
+        </section>
+    
         <section id="experience" className="section">
           <Experience />
         </section>
         
-        <section id="services" className="section">
-          <Services />
-        </section>
         
-        <section id="AboutMe" className="section">
-          <AboutMe />
-        </section>
+        
         
         <section id="contact" className="section">
           <Contact />
