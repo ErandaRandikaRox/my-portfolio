@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaPaperPlane, FaLinkedin, FaGithub, FaTwitter, FaWhatsapp } from 'react-icons/fa';
+import { FaPaperPlane, FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
 import './Contact.css';
 
 const Contact = () => {
@@ -16,19 +16,19 @@ const Contact = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const sendWhatsAppMessage = (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    const phoneNumber = '94778454338'; // WhatsApp number in international format without +
-    const message = `Name: ${formData.name}%0AEmail: ${formData.email}%0AMessage: ${formData.message}`;
+    // Email message
+    const emailSubject = encodeURIComponent('Contact Form Submission');
+    const emailBody = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}`);
+    const emailUrl = `mailto:erandarandika9@gmail.com?subject=${emailSubject}&body=${emailBody}`;
     
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+    // Open email client
+    window.location.href = emailUrl;
     
-    // Open WhatsApp in a new tab
-    window.open(whatsappUrl, '_blank');
-    
-    setStatus({ type: 'success', message: 'Redirecting to WhatsApp...' });
+    setStatus({ type: 'success', message: 'Opening email client...' });
     setFormData({ name: '', email: '', message: '' });
     setIsSubmitting(false);
   };
@@ -42,7 +42,7 @@ const Contact = () => {
         </div>
         
         <div className="contact-content">
-          <form onSubmit={sendWhatsAppMessage} className="contact-form">
+          <form onSubmit={sendEmail} className="contact-form">
             <div className="form-group floating-label">
               <input
                 type="text"
@@ -87,7 +87,7 @@ const Contact = () => {
                 'Sending...'
               ) : (
                 <>
-                  <FaWhatsapp className="icon" /> Send via WhatsApp
+                  <FaPaperPlane className="icon" /> Send Message
                 </>
               )}
             </button>
@@ -105,11 +105,6 @@ const Contact = () => {
               <a href="mailto:erandarandika9@gmail.com" className="email-link">
                 erandarandika9@gmail.com
               </a>
-              <div className="whatsapp-contact">
-                <a href="https://wa.me/94778454338" target="_blank" rel="noopener noreferrer">
-                  <FaWhatsapp /> 077 845 4338
-                </a>
-              </div>
             </div>
             
             <div className="social-links">
