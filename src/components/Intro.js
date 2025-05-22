@@ -15,7 +15,7 @@ import mysqlIcon from '../assets/svg/mysql.svg';
 import myPhoto from '../assets/images/2.jpg';
 
 const Intro = () => {
-  const jobTitles = ['Android Developer','iOS Developer,Web Developer'];
+  const jobTitles = ['Android Developer', 'iOS Developer', 'Web Developer'];
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
 
