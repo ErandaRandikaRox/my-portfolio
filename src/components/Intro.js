@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Intro.css';
 
 import githubIcon from '../assets/svg/github.svg';
@@ -18,16 +18,80 @@ const Intro = () => {
   const jobTitles = ['Android Developer', 'iOS Developer', 'Web Developer'];
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
+  const photoRef = useRef(null);
+  const skillItemsRef = useRef([]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    // Job title rotation effect
+    const titleInterval = setInterval(() => {
       setIsTyping(false);
       setTimeout(() => {
         setCurrentTitleIndex((prevIndex) => (prevIndex + 1) % jobTitles.length);
         setIsTyping(true);
       }, 300);
     }, 2000);
-    return () => clearInterval(interval);
+
+    // 3D photo tilt effect
+    const handleMouseMove = (e) => {
+      if (photoRef.current) {
+        const { left, top, width, height } = photoRef.current.getBoundingClientRect();
+        const x = (e.clientX - left) / width - 0.5;
+        const y = (e.clientY - top) / height - 0.5;
+        
+        photoRef.current.style.transform = `
+          perspective(1000px)
+          rotateX(${y * 10}deg)
+          rotateY(${-x * 10}deg)
+          scale(1.03)
+        `;
+        photoRef.current.style.boxShadow = `
+          ${-x * 20}px ${y * 20}px 40px rgba(0, 0, 0, 0.2)
+        `;
+      }
+    };
+
+    const handleMouseLeave = () => {
+      if (photoRef.current) {
+        photoRef.current.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+        photoRef.current.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.15)';
+      }
+    };
+
+    const photoElement = photoRef.current;
+    if (photoElement) {
+      photoElement.addEventListener('mousemove', handleMouseMove);
+      photoElement.addEventListener('mouseleave', handleMouseLeave);
+    }
+
+    // Skill items hover effect
+    skillItemsRef.current.forEach(item => {
+      if (item) {
+        item.addEventListener('mousemove', (e) => {
+          const { left, top, width, height } = item.getBoundingClientRect();
+          const x = (e.clientX - left) / width - 0.5;
+          const y = (e.clientY - top) / height - 0.5;
+          
+          item.style.transform = `
+            perspective(500px)
+            rotateX(${y * 5}deg)
+            rotateY(${-x * 5}deg)
+            translateZ(10px)
+          `;
+        });
+
+        item.addEventListener('mouseleave', () => {
+          item.style.transform = 'perspective(500px) rotateX(0) rotateY(0) translateZ(0)';
+        });
+      }
+    });
+
+    return () => {
+      clearInterval(titleInterval);
+      if (photoElement) {
+        photoElement.removeEventListener('mousemove', handleMouseMove);
+        photoElement.removeEventListener('mouseleave', handleMouseLeave);
+      }
+    };
   }, [jobTitles.length]);
 
   const openLink = (url) => {
@@ -89,11 +153,17 @@ const Intro = () => {
                 <div className="skill-category">
                   <h5 className="skill-category-title">Frontend</h5>
                   <div className="skill-items">
-                    <div className="skill-item">
+                    <div 
+                      className="skill-item" 
+                      ref={el => skillItemsRef.current[0] = el}
+                    >
                       <img src={flutterIcon} alt="Flutter" className="skill-icon" />
                       <span>Flutter</span>
                     </div>
-                    <div className="skill-item">
+                    <div 
+                      className="skill-item" 
+                      ref={el => skillItemsRef.current[1] = el}
+                    >
                       <img src={reactIcon} alt="React" className="skill-icon" />
                       <span>React</span>
                     </div>
@@ -103,11 +173,17 @@ const Intro = () => {
                 <div className="skill-category">
                   <h5 className="skill-category-title">Backend</h5>
                   <div className="skill-items">
-                    <div className="skill-item">
+                    <div 
+                      className="skill-item" 
+                      ref={el => skillItemsRef.current[2] = el}
+                    >
                       <img src={pythonIcon} alt="Python" className="skill-icon" />
                       <span>Python</span>
                     </div>
-                    <div className="skill-item">
+                    <div 
+                      className="skill-item" 
+                      ref={el => skillItemsRef.current[3] = el}
+                    >
                       <img src={expressIcon} alt="Express" className="skill-icon" />
                       <span>Express</span>
                     </div>
@@ -117,11 +193,17 @@ const Intro = () => {
                 <div className="skill-category">
                   <h5 className="skill-category-title">Databases</h5>
                   <div className="skill-items">
-                    <div className="skill-item">
+                    <div 
+                      className="skill-item" 
+                      ref={el => skillItemsRef.current[4] = el}
+                    >
                       <img src={mongodbIcon} alt="MongoDB" className="skill-icon" />
                       <span>MongoDB</span>
                     </div>
-                    <div className="skill-item">
+                    <div 
+                      className="skill-item" 
+                      ref={el => skillItemsRef.current[5] = el}
+                    >
                       <img src={mysqlIcon} alt="MySQL" className="skill-icon" />
                       <span>MySQL</span>
                     </div>
@@ -134,7 +216,12 @@ const Intro = () => {
         
         <div className="intro-right">
           <div className="photo-container">
-            <img src={myPhoto} alt="Eranda Randika" className="intro-photo" />
+            <img 
+              ref={photoRef}
+              src={myPhoto} 
+              alt="Eranda Randika" 
+              className="intro-photo" 
+            />
             <div className="photo-decoration"></div>
           </div>
         </div>

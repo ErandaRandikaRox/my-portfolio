@@ -8,6 +8,7 @@
   padding: 2rem;
   position: relative;
   overflow: hidden;
+  perspective: 1500px; /* Adds depth to the section */
 }
 
 .intro::before {
@@ -20,6 +21,8 @@
   background: rgba(26, 115, 232, 0.1);
   border-radius: 50%;
   z-index: 0;
+  transform: translateZ(-100px); /* Parallax effect */
+  transition: transform 0.1s linear;
 }
 
 .intro::after {
@@ -32,6 +35,8 @@
   background: rgba(52, 168, 83, 0.1);
   border-radius: 50%;
   z-index: 0;
+  transform: translateZ(-150px); /* Parallax effect */
+  transition: transform 0.1s linear;
 }
 
 .intro-container {
@@ -60,6 +65,13 @@
   font-weight: 600;
   margin-bottom: 1rem;
   box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
+  transition: transform 0.5s ease;
+  transform-style: preserve-3d;
+}
+
+.welcome-badge:hover {
+  transform: rotateY(180deg); /* 3D flip effect */
+  box-shadow: 0 6px 20px rgba(26, 115, 232, 0.3);
 }
 
 .intro-left h1 {
@@ -123,6 +135,11 @@
   50% { opacity: 0; }
 }
 
+@keyframes shine {
+  0% { transform: translateX(-100%) translateZ(50px); }
+  100% { transform: translateX(100%) translateZ(50px); }
+}
+
 .intro-description {
   font-size: 1.1rem;
   line-height: 1.6;
@@ -175,16 +192,17 @@
   border: none;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
   width: 100%;
   text-align: left;
   background: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
 }
 
 .social-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transform: perspective(500px) rotateX(5deg) rotateY(5deg) translateZ(10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .social-button.github {
@@ -240,12 +258,14 @@
   padding: 0.5rem 0.8rem;
   border-radius: 6px;
   font-size: 0.9rem;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  transform-style: preserve-3d;
 }
 
 .skill-item:hover {
   background: #edf2f7;
-  transform: translateY(-2px);
+  transform: perspective(500px) rotateX(8deg) rotateY(8deg) translateZ(15px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 .skill-icon {
@@ -272,7 +292,26 @@
   object-fit: cover;
   position: relative;
   z-index: 2;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.intro-photo::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 60%);
+  opacity: 0;
+  transform: translateX(-100%) translateZ(50px);
+  transition: opacity 0.3s ease;
+}
+
+.intro-photo:hover::after {
+  opacity: 1;
+  animation: shine 1.5s infinite;
 }
 
 .photo-decoration {
@@ -284,6 +323,7 @@
   border: 3px solid #1a73e8;
   border-radius: 15px;
   z-index: 1;
+  transform: translateZ(-20px); /* Adds 3D depth */
 }
 
 /* Responsive Design */
