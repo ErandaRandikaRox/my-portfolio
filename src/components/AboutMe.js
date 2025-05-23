@@ -7,8 +7,10 @@ import ExperienceContent from './ExperienceContent';
 
 const AboutMe = () => {
   const [activeSection, setActiveSection] = useState('education');
+  const [contentKey, setContentKey] = useState('education'); // For animation purposes
   const sectionRefs = useRef([]);
   const titleRef = useRef(null);
+  const contentRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -16,6 +18,8 @@ const AboutMe = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('animate');
+          } else {
+            entry.target.classList.remove('animate');
           }
         });
       },
@@ -35,26 +39,36 @@ const AboutMe = () => {
     };
   }, []);
 
+  const handleTabChange = (sectionId) => {
+    setActiveSection(sectionId);
+    setContentKey(sectionId); // Change key to force re-render and trigger animation
+  };
+
   const sections = [
     {
       id: 'education',
-      title: 'Education',
+      title: 'Academic Background',
       icon: <FaGraduationCap />,
-      component: <Education />
+      component: <Education />,
+      description: 'My educational qualifications and certifications'
     },
     {
       id: 'skills',
-      title: 'Skills',
+      title: 'Technical Expertise',
       icon: <FaCode />,
-      component: <Skills />
+      component: <Skills />,
+      description: 'My technical skills and programming languages'
     },
     {
       id: 'experience',
-      title: 'Experience',
+      title: 'Professional Experience',
       icon: <FaBriefcase />,
-      component: <ExperienceContent />
+      component: <ExperienceContent />,
+      description: 'My work history and professional achievements'
     }
   ];
+
+  const activeTabData = sections.find(s => s.id === activeSection);
 
   return (
     <section id="about-me" className="about-me-section">
@@ -64,7 +78,9 @@ const AboutMe = () => {
             <FaUserTie className="title-icon" />
             Professional Journey
           </h2>
-          <p className="section-subtitle">3+ years of development experience</p>
+          <p className="section-subtitle">
+            {activeTabData ? activeTabData.description : '3+ years of development experience'}
+          </p>
         </div>
 
         <div className="tab-container">
@@ -73,7 +89,8 @@ const AboutMe = () => {
               key={section.id}
               ref={el => (sectionRefs.current[index] = el)}
               className={`tab-button ${activeSection === section.id ? 'active' : ''}`}
-              onClick={() => setActiveSection(section.id)}
+              onClick={() => handleTabChange(section.id)}
+              aria-label={`Show ${section.title}`}
             >
               {section.icon}
               <span>{section.title}</span>
@@ -81,8 +98,14 @@ const AboutMe = () => {
           ))}
         </div>
 
-        <div className="content-container">
-          {sections.find(s => s.id === activeSection)?.component}
+        <div className="content-container" ref={contentRef}>
+          <div 
+            key={contentKey} 
+            className="content-wrapper"
+            style={{ animation: 'fadeIn 0.5s ease-out forwards' }}
+          >
+            {activeTabData?.component}
+          </div>
         </div>
       </div>
     </section>

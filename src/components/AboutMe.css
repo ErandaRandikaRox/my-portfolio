@@ -1,4 +1,4 @@
-/* AboutMe.css */
+/* AboutMe.css - Enhanced */
 .about-me-section {
   padding: 6rem 1rem;
   background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
@@ -45,6 +45,7 @@
   color: #4a5568;
   max-width: 600px;
   margin: 0 auto;
+  transition: all 0.3s ease;
 }
 
 .tab-container {
@@ -60,16 +61,18 @@
   align-items: center;
   gap: 0.6rem;
   background: transparent;
-  border: none;
+  border: 1px solid #e2e8f0;
   padding: 0.8rem 1.5rem;
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 500;
   color: #4a5568;
   cursor: pointer;
-  transition: all 0.3s ease;
-  opacity: 0;
-  transform: translateY(20px);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  opacity: 1;
+  transform: translateY(0);
+  position: relative;
+  overflow: hidden;
 }
 
 .tab-button.animate {
@@ -83,16 +86,37 @@
 .tab-button:hover {
   background: rgba(26, 115, 232, 0.1);
   color: #1a73e8;
+  border-color: #1a73e8;
+  transform: translateY(-2px);
 }
 
 .tab-button.active {
   background: #1a73e8;
   color: white;
+  border-color: #1a73e8;
   box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
+  transform: translateY(-2px);
+}
+
+.tab-button.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 3px;
+  background: #1a73e8;
+  border-radius: 3px;
 }
 
 .tab-button svg {
   font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+.tab-button:hover svg {
+  transform: scale(1.1);
 }
 
 .content-container {
@@ -101,6 +125,12 @@
   padding: 2rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   min-height: 400px;
+  position: relative;
+  overflow: hidden;
+}
+
+.content-wrapper {
+  animation: fadeIn 0.5s ease-out forwards;
 }
 
 /* Animations */
@@ -108,6 +138,17 @@
   0% {
     opacity: 0;
     transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
   }
   100% {
     opacity: 1;
@@ -171,9 +212,16 @@
     font-size: 0.95rem;
   }
   
+  .tab-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
   .tab-button {
-    padding: 0.5rem 0.8rem;
-    font-size: 0.85rem;
+    width: 100%;
+    max-width: 250px;
+    justify-content: center;
+    padding: 0.8rem;
   }
   
   .content-container {
