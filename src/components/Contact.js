@@ -108,10 +108,10 @@ const Contact = () => {
             <div className="social-links">
               <h3>Find Me On</h3>
               <div className="social-icons">
-                <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/eranda-randika-93453b284/" target="_blank" rel="noopener noreferrer">
                   <FaLinkedin />
                 </a>
-                <a href="https://facebook.com/yourprofile" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.facebook.com/eranda.randika.908884/" target="_blank" rel="noopener noreferrer">
                   <FaFacebook />
                 </a>
                 <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer">
