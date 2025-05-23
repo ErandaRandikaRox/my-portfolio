@@ -10,9 +10,9 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
-      
+
       // Update active section based on scroll position
-      const sections = ['intro', 'AboutMe', 'experience', 'services', 'contact'];
+      const sections = ['intro', 'AboutMe', 'experience', 'projects', 'contact'];
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -32,8 +32,16 @@ const Navbar = () => {
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
     if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+      // Calculate offset for fixed navbar (adjust 80px based on navbar height)
+      const navbarHeight = 80;
+      const sectionPosition = section.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: sectionPosition - navbarHeight,
+        behavior: 'smooth'
+      });
       setActiveSection(sectionId);
+    } else {
+      console.warn(`Section with ID "${sectionId}" not found`);
     }
     setIsOpen(false);
   };
@@ -80,8 +88,8 @@ const Navbar = () => {
             <span>Experience</span>
           </button>
           <button 
-            onClick={() => scrollToSection('services')}
-            className={`nav-link ${activeSection === 'services' ? 'active' : ''}`}
+            onClick={() => scrollToSection('projects')}
+            className={`nav-link ${activeSection === 'projects' ? 'active' : ''}`}
           >
             <FaCode className="nav-icon" />
             <span>Projects</span>

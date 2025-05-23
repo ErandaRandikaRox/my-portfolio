@@ -63,7 +63,7 @@ const AboutMe = () => {
       id: 'experience',
       title: 'Professional Experience',
       icon: <FaBriefcase />,
-      component: <ExperienceContent />,
+      component: <ExperienceContent/>,
       description: 'My work history and professional achievements'
     }
   ];
