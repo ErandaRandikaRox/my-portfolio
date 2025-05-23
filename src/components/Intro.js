@@ -22,7 +22,6 @@ const Intro = () => {
   const skillItemsRef = useRef([]);
 
   useEffect(() => {
-    // Job title rotation effect
     const titleInterval = setInterval(() => {
       setIsTyping(false);
       setTimeout(() => {
@@ -31,7 +30,6 @@ const Intro = () => {
       }, 300);
     }, 2000);
 
-    // 3D photo tilt effect
     const handleMouseMove = (e) => {
       if (photoRef.current) {
         const { left, top, width, height } = photoRef.current.getBoundingClientRect();
@@ -63,7 +61,6 @@ const Intro = () => {
       photoElement.addEventListener('mouseleave', handleMouseLeave);
     }
 
-    // Skill items hover effect
     skillItemsRef.current.forEach(item => {
       if (item) {
         item.addEventListener('mousemove', (e) => {
@@ -130,7 +127,7 @@ const Intro = () => {
                 </button>
                 <button
                   className="social-button facebook"
-                  onClick={() => openLink('https://web.facebook.com/?_rdc=1&_rdr')}
+                  onClick={() => openLink('https://www.facebook.com/eranda.randika.908884/')}
                   aria-label="Facebook"
                 >
                   <img src={facebookIcon} alt="Facebook" className="social-icon" />
@@ -138,7 +135,7 @@ const Intro = () => {
                 </button>
                 <button
                   className="social-button linkedin"
-                  onClick={() => openLink('https://www.linkedin.com/feed/')}
+                  onClick={() => openLink('https://www.linkedin.com/in/eranda-randika-93453b284/')}
                   aria-label="LinkedIn"
                 >
                   <img src={linkedinIcon} alt="LinkedIn" className="social-icon" />
