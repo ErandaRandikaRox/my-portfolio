@@ -1,5 +1,6 @@
+// Education.js
 import React from 'react';
-import { FaGraduationCap, FaLaptopCode, FaBookOpen } from 'react-icons/fa';
+import { FaLaptopCode, FaBookOpen } from 'react-icons/fa';
 import './Education.css';
 
 const Education = () => {
@@ -31,14 +32,6 @@ const Education = () => {
   return (
     <section id="education" className="education-section">
       <div className="education-container">
-        <div className="section-header">
-          <h2 className="section-title">
-            <FaGraduationCap className="title-icon" />
-            Education & Learning
-          </h2>
-          <p className="section-subtitle">My journey of continuous learning and skill development</p>
-        </div>
-
         <div className="education-timeline">
           {educationItems.map((item, index) => (
             <div key={index} className="timeline-item">

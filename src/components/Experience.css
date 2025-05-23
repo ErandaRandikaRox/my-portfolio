@@ -1,283 +1,276 @@
-/* Import Poppins font from Google Fonts */
+/* Education.css */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
-.experience {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
+.education-section {
+  padding: 5rem 1rem;
   background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
-  padding: 6rem 2rem;
   position: relative;
   overflow: hidden;
+  font-family: 'Poppins', sans-serif;
 }
 
-.experience::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyMDQsIDIwNCwgMjA0LCAwLjEpIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3BhdHRlcm4pIi8+PC9zdmc+');
-  opacity: 0.5;
-  z-index: 0;
-}
-
-.experience-container {
-  max-width: 1200px;
-  width: 100%;
+.education-container {
+  max-width: 1000px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
 }
 
-.experience-header {
+.section-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
 .section-title {
-  font-size: clamp(3rem, 7vw, 4.5rem);
-  font-weight: 800;
-  margin-bottom: 1.5rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
   color: #2d3748;
-  position: relative;
-  display: inline-block;
-  line-height: 1.2;
-  letter-spacing: -0.5px;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
 }
 
-.title-decoration {
+.title-icon {
   color: #1a73e8;
-  font-size: 1.05em;
+  font-size: 1.2em;
 }
 
 .section-title::after {
   content: '';
   position: absolute;
-  bottom: -15px;
+  bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 120px;
-  height: 5px;
+  width: 60px;
+  height: 4px;
   background: linear-gradient(90deg, #1a73e8, #34a853);
-  border-radius: 3px;
+  border-radius: 2px;
 }
 
 .section-subtitle {
-  font-size: 1.7rem;
-  max-width: 700px;
-  margin: 1.5rem auto 0;
-  line-height: 1.6;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  text-transform: none;
-  opacity: 0.9;
-  transition: all 0.3s ease;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(90deg, #1a73e8, #34a853);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 1.1rem;
+  color: #4a5568;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.experience-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.experience-card {
-  background: white;
-  border-radius: 16px;
-  padding: 2.5rem 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+.education-timeline {
   position: relative;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(30px);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: 30px;
 }
 
-.experience-card.animate {
-  animation: cardEntrance 0.6s ease-out forwards;
-}
-
-@keyframes cardEntrance {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.experience-card::before {
+.education-timeline::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 5px;
-  background: linear-gradient(90deg, #1a73e8, #34a853);
+  bottom: 0;
+  left: 30px;
+  width: 2px;
+  background: #e2e8f0;
 }
 
-.experience-card.primary {
-  transform: translateY(0);
-  box-shadow: 0 15px 40px rgba(26, 115, 232, 0.15);
+.timeline-item {
+  position: relative;
+  margin-bottom: 2.5rem;
 }
 
-.experience-card.primary::before {
-  height: 8px;
+.timeline-year {
+  position: absolute;
+  left: -100px;
+  top: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a73e8;
+  background: rgba(26, 115, 232, 0.1);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
 }
 
-.experience-card:hover {
-  transform: translateY(-10px) !important;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+.timeline-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.timeline-card::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  transform: rotate(45deg);
+  box-shadow: -3px 3px 5px rgba(0, 0, 0, 0.05);
+  z-index: -1;
+}
+
+.timeline-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .card-icon {
-  position: relative;
-  width: 60px;
-  height: 60px;
-  margin-bottom: 1.5rem;
-}
-
-.icon-background {
-  position: absolute;
-  width: 100%;
-  height: 100%;
   background: rgba(26, 115, 232, 0.1);
-  border-radius: 12px;
-  transform: rotate(45deg);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.icon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1.5rem;
+.education-icon {
   color: #1a73e8;
+  font-size: 1.2rem;
 }
 
 .card-title {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 600;
-  margin-bottom: 1rem;
   color: #2d3748;
+  margin: 0;
 }
 
 .card-description {
   font-size: 1rem;
   line-height: 1.6;
   color: #4a5568;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
-.card-footer {
-  display: flex;
-  align-items: center;
+.card-highlights {
+  background: rgba(26, 115, 232, 0.05);
+  padding: 1rem;
+  border-radius: 8px;
 }
 
-.experience-years {
+.card-highlights h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a73e8;
+  margin-bottom: 0.5rem;
+}
+
+.card-highlights ul {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.card-highlights li {
   font-size: 0.9rem;
-  font-weight: 500;
-  color: white;
-  background: linear-gradient(90deg, #1a73e8, #34a853);
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
+  line-height: 1.5;
+  color: #4a5568;
+  margin-bottom: 0.3rem;
+}
+
+.highlight-bullet {
+  color: #1a73e8;
+  margin-right: 0.5rem;
 }
 
 /* Responsive Design */
-@media (max-width: 1200px) {
-  .section-title {
-    font-size: clamp(2.8rem, 7vw, 4rem);
-  }
-  .section-subtitle {
-    font-size: 1.5rem;
-  }
-}
-
 @media (max-width: 992px) {
-  .experience {
-    padding: 5rem 1.5rem;
+  .education-section {
+    padding: 4rem 1rem;
   }
-  .experience-header {
-    margin-bottom: 3rem;
+  
+  .education-timeline {
+    padding-left: 20px;
   }
-  .section-title {
-    font-size: clamp(2.5rem, 7vw, 3.5rem);
+  
+  .timeline-year {
+    position: static;
+    display: inline-block;
+    margin-bottom: 0.5rem;
   }
-  .section-subtitle {
-    font-size: 1.4rem;
-  }
-  .experience-grid {
-    gap: 1.5rem;
-  }
-  .experience-card {
-    padding: 2rem 1.5rem;
+  
+  .education-timeline::before {
+    left: 20px;
   }
 }
 
 @media (max-width: 768px) {
-  .experience {
-    padding: 4rem 1rem;
+  .education-timeline {
+    padding-left: 0;
   }
-  .experience-header {
-    margin-bottom: 2.5rem;
+  
+  .education-timeline::before {
+    display: none;
   }
-  .section-title {
-    font-size: clamp(2.2rem, 7vw, 3rem);
+  
+  .timeline-card::before {
+    display: none;
   }
-  .section-subtitle {
-    font-size: 1.3rem;
-    max-width: 600px;
+  
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
   }
-  .section-title::after {
-    width: 100px;
-    bottom: -12px;
-  }
-  .experience-grid {
-    grid-template-columns: 1fr;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-  .experience-card.primary {
-    transform: translateY(0);
+  
+  .card-icon {
+    margin-bottom: 0.5rem;
   }
 }
 
-@media (max-width: 576px) {
-  .experience {
-    padding: 3.5rem 1rem;
+@media (max-width: 480px) {
+  .education-section {
+    padding: 3rem 1rem;
   }
+  
   .section-title {
-    font-size: clamp(2rem, 7vw, 2.5rem);
+    font-size: 1.8rem;
   }
+  
   .section-subtitle {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
-  .section-title::after {
-    width: 80px;
-    height: 4px;
+  
+  .timeline-card {
+    padding: 1.25rem;
   }
+  
   .card-title {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
+  
   .card-description {
     font-size: 0.95rem;
   }
 }
 
-@media (max-width: 400px) {
-  .section-title {
-    font-size: clamp(1.8rem, 7vw, 2.2rem);
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  .section-subtitle {
-    font-size: 1.1rem;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
+
+.timeline-item {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.2s; }
+.timeline-item:nth-child(2) { animation-delay: 0.4s; }
