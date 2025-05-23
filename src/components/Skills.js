@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { FaCode, FaChartLine } from 'react-icons/fa';
 import './Skills.css';
 
 const Skills = () => {
@@ -14,7 +15,6 @@ const Skills = () => {
   ];
 
   useEffect(() => {
-    // Animation trigger for skill bars
     const skillBars = document.querySelectorAll('.skill-level');
     skillBars.forEach(bar => {
       const width = bar.getAttribute('data-percent');
@@ -29,8 +29,13 @@ const Skills = () => {
     <section id="skills" className="skills-section">
       <div className="skills-container">
         <div className="section-header">
-          <h2 className="section-title">Technical Skills</h2>
-          <p className="section-subtitle">My proficiency in various technologies</p>
+          <div className="title-wrapper">
+            <FaCode className="title-icon left-icon" />
+            <h2 className="section-title" aria-label="My proficiency in various technologies">
+              My proficiency in various technologies
+            </h2>
+            <FaChartLine className="title-icon right-icon" />
+          </div>
         </div>
         
         <div className="skills-grid">
@@ -44,8 +49,8 @@ const Skills = () => {
                 <div 
                   className="skill-level" 
                   style={{ 
-                    width: `${skill.percentage}%`,
-                    backgroundColor: skill.color,
+                    width: `${skill.percentage}%`, 
+                    backgroundColor: skill.color 
                   }}
                   data-percent={skill.percentage}
                 ></div>
