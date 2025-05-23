@@ -1,3 +1,4 @@
+// Experience.js
 import React, { useEffect, useRef } from 'react';
 import './Experience.css';
 import { FaMobileAlt, FaCode, FaLaptopCode } from 'react-icons/fa';
@@ -35,15 +36,6 @@ const Experience = () => {
   return (
     <section id="experience" className="experience" ref={sectionRef}>
       <div className="experience-container">
-        <div className="experience-header">
-          <h2 className="section-title">
-            <span className="title-decoration">Experience</span> & Skills
-          </h2>
-          <p className="section-subtitle">
-            Skills and services I bring to your projects
-          </p>
-        </div>
-        
         <div className="experience-grid">
           <div
             className="experience-card primary"
