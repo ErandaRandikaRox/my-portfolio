@@ -35,9 +35,6 @@ const Experience = () => {
   return (
     <section id="experience" className="experience" ref={sectionRef}>
       <div className="experience-container">
-        <div className="experience-header">
-          <h2 className="section-title">My Proficiency in Various Technologies</h2>
-        </div>
         <div className="experience-grid">
           <div
             className="experience-card primary"
