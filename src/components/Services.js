@@ -44,7 +44,7 @@ const Services = () => {
       image: projectImage1,
       tags: ['Flutter', 'Firebase', 'Dart'],
       links: {
-        github: '#',
+        github: 'https://github.com/ErandaRandikaRox/Billing_App_flutter',
         live: '#',
       },
       icon: <FaMobileAlt className="project-icon" />
