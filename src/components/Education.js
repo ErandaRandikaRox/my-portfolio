@@ -1,4 +1,4 @@
-// Education.js
+// Education.js (Unchanged)
 import React from 'react';
 import { FaLaptopCode, FaBookOpen } from 'react-icons/fa';
 import './Education.css';

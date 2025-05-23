@@ -16,51 +16,11 @@
   z-index: 1;
 }
 
-.section-header {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.section-title {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: 700;
-  color: #2d3748;
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-}
-
-.title-icon {
-  color: #1a73e8;
-  font-size: 1.2em;
-}
-
-.section-title::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: linear-gradient(90deg, #1a73e8, #34a853);
-  border-radius: 2px;
-}
-
-.section-subtitle {
-  font-size: 1.1rem;
-  color: #4a5568;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
 .education-timeline {
   position: relative;
   max-width: 800px;
   margin: 0 auto;
-  padding-left: 30px;
+  padding-left: 60px; /* Increased from 30px to 60px */
 }
 
 .education-timeline::before {
@@ -68,7 +28,7 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 30px;
+  left: 60px; /* Increased from 30px to 60px */
   width: 2px;
   background: #e2e8f0;
 }
@@ -80,7 +40,7 @@
 
 .timeline-year {
   position: absolute;
-  left: -100px;
+  left: -200px; /* Increased from -100px to -200px */
   top: 0;
   font-size: 1.1rem;
   font-weight: 600;
@@ -103,7 +63,7 @@
   content: '';
   position: absolute;
   top: 20px;
-  left: -10px;
+  left: -20px; /* Increased from -10px to -20px */
   width: 20px;
   height: 20px;
   background: white;
@@ -191,17 +151,17 @@
   }
   
   .education-timeline {
-    padding-left: 20px;
+    padding-left: 40px; /* Increased from 20px to 40px */
   }
   
   .timeline-year {
     position: static;
     display: inline-block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem; /* Increased from 0.5rem to 1rem to double gap */
   }
   
   .education-timeline::before {
-    left: 20px;
+    left: 40px; /* Increased from 20px to 40px */
   }
 }
 
@@ -232,14 +192,6 @@
 @media (max-width: 480px) {
   .education-section {
     padding: 3rem 1rem;
-  }
-  
-  .section-title {
-    font-size: 1.8rem;
-  }
-  
-  .section-subtitle {
-    font-size: 1rem;
   }
   
   .timeline-card {
