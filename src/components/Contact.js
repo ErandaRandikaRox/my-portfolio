@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaPaperPlane, FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
+import { FaPaperPlane, FaLinkedin, FaFacebook, FaTwitter } from 'react-icons/fa';
 import './Contact.css';
 
 const Contact = () => {
@@ -20,12 +20,10 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Email message
     const emailSubject = encodeURIComponent('Contact Form Submission');
     const emailBody = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}`);
     const emailUrl = `mailto:erandarandika9@gmail.com?subject=${emailSubject}&body=${emailBody}`;
     
-    // Open email client
     window.location.href = emailUrl;
     
     setStatus({ type: 'success', message: 'Opening email client...' });
@@ -113,8 +111,8 @@ const Contact = () => {
                 <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
                   <FaLinkedin />
                 </a>
-                <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer">
-                  <FaGithub />
+                <a href="https://facebook.com/yourprofile" target="_blank" rel="noopener noreferrer">
+                  <FaFacebook />
                 </a>
                 <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer">
                   <FaTwitter />

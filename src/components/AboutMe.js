@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FaGraduationCap, FaCode, FaBriefcase, FaUserTie } from 'react-icons/fa';
+import { FaGraduationCap, FaCode, FaUserTie } from 'react-icons/fa';
 import './AboutMe.css';
 import Education from './Education';
 import Skills from './Skills';
-import ExperienceContent from './ExperienceContent';
 
 const AboutMe = () => {
   const [activeSection, setActiveSection] = useState('education');
-  const [contentKey, setContentKey] = useState('education'); // For animation purposes
+  const [contentKey, setContentKey] = useState('education');
   const sectionRefs = useRef([]);
   const titleRef = useRef(null);
   const contentRef = useRef(null);
@@ -41,7 +40,7 @@ const AboutMe = () => {
 
   const handleTabChange = (sectionId) => {
     setActiveSection(sectionId);
-    setContentKey(sectionId); // Change key to force re-render and trigger animation
+    setContentKey(sectionId);
   };
 
   const sections = [
@@ -58,13 +57,6 @@ const AboutMe = () => {
       icon: <FaCode />,
       component: <Skills />,
       description: 'My technical skills and programming languages'
-    },
-    {
-      id: 'experience',
-      title: 'Professional Experience',
-      icon: <FaBriefcase />,
-      component: <ExperienceContent/>,
-      description: 'My work history and professional achievements'
     }
   ];
 

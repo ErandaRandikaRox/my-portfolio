@@ -155,7 +155,8 @@
 .contact-info {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 1.5rem;
 }
 
 .direct-contact h3,
@@ -171,7 +172,7 @@
   color: #2d3748;
   text-decoration: none;
   transition: color 0.3s ease;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .email-link:hover {
@@ -180,12 +181,12 @@
 
 .social-icons {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem; /* Increased from 1.5rem for larger icons */
 }
 
 .social-icons a {
   color: #4a5568;
-  font-size: 1.5rem;
+  font-size: 2.5rem; /* Increased from 2rem */
   transition: all 0.3s ease;
 }
 
@@ -202,13 +203,7 @@
   }
   
   .contact-info {
-    flex-direction: row;
-    gap: 2rem;
-  }
-  
-  .direct-contact,
-  .social-links {
-    flex: 1;
+    align-items: center;
   }
 }
 
@@ -227,16 +222,15 @@
 }
 
 @media (max-width: 576px) {
-  .contact-info {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  .email-link {
-    margin-bottom: 1.5rem;
-  }
-  
   .contact-content {
     padding: 1.5rem;
+  }
+  
+  .social-icons {
+    gap: 1.5rem; /* Increased from 1rem for larger icons */
+  }
+  
+  .social-icons a {
+    font-size: 2.2rem; /* Increased from 1.8rem */
   }
 }
