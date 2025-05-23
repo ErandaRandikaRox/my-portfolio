@@ -29,13 +29,7 @@ function App() {
           <Services />
         </section>
     
-        <section id="experience" className="section">
-          <Experience />
-        </section>
-        
-        
-        
-        
+      
         <section id="contact" className="section">
           <Contact />
         </section>
